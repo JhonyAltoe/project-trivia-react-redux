@@ -1,6 +1,5 @@
 import React from 'react';
 import * as EmailValidator from 'email-validator';
-import Header from '../../components/Header';
 
 class Login extends React.Component {
   constructor(props) {
@@ -29,7 +28,6 @@ class Login extends React.Component {
     const { bttDisabled, inputPlayerName, inputGravatarEmail } = this.state;
     return (
       <div>
-        <Header />
         <form>
           <label htmlFor="input-player-name">
             <input
