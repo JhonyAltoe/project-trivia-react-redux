@@ -1,5 +1,8 @@
 import React from 'react';
 import * as EmailValidator from 'email-validator';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import getToken from '../../redux/actions';
 
 class Login extends React.Component {
   constructor(props) {
@@ -22,6 +25,12 @@ class Login extends React.Component {
     const validate = ((inputPlayerName.length >= minCharacters)
       && EmailValidator.validate(inputGravatarEmail));
     if (validate) this.setState({ bttDisabled: false });
+  }
+
+  startGame = () => {
+    const { history, fetchAPI } = this.props;
+    history.push('/gamescreen');
+    fetchAPI();
   }
 
   render() {
@@ -54,6 +63,7 @@ class Login extends React.Component {
           disabled={ bttDisabled }
           type="button"
           data-testid="btn-play"
+          onClick={ this.startGame }
         >
           Play
         </button>
@@ -62,4 +72,14 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  fetchAPI: () => dispatch(getToken()),
+});
+
+Login.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+}.isRequired;
+
+export default connect(null, mapDispatchToProps)(Login);
