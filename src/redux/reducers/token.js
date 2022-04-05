@@ -2,13 +2,10 @@ const initialState = {
   token: '',
 };
 
-const reducer = (state = initialState, action) => {
+const token = (state = initialState, action) => {
   switch (action.type) {
   case 'SUCCESS_REQUEST':
-    return {
-      ...state,
-      token: action.payload,
-    };
+    return action.payload;
   case 'FAILED_REQUEST':
     return {
       ...state,
@@ -19,4 +16,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default token;
