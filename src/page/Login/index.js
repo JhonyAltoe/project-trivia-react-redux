@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as EmailValidator from 'email-validator';
 
 class Login extends React.Component {
@@ -60,14 +61,14 @@ class Login extends React.Component {
           </button>
         </form>
         <div>
-          <button
-            type="button"
-            // onClick={ }
-            data-testid="btn-settings"
-          >
-            {' '}
-            Configurações
-          </button>
+          <Link to="/configuracoes">
+            <button
+              type="button"
+              data-testid="btn-settings"
+            >
+              Configurações
+            </button>
+          </Link>
         </div>
       </div>
     );
