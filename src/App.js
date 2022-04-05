@@ -11,11 +11,8 @@ export default function App() {
   return (
     <Switch>
       <Route exact path="/" component={ Login } />
-<<<<<<< HEAD
       <Route exact path="/configuracoes" component={ Config } />
-=======
       <Route exact path="/gamescreen" component={ GameScreen } />
->>>>>>> main-group-17-req-2.1
       <Route path="*" component={ NotFound } />
     </Switch>
   );
