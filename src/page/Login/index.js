@@ -29,8 +29,9 @@ class Login extends React.Component {
     if (validate) this.setState({ bttDisabled: false });
   }
 
-  startGame = () => {
+  startGame = async () => {
     const { history, fetchAPI } = this.props;
+    await fetchAPI();
     history.push('/gamescreen');
     fetchAPI();
     const { inputPlayerName, inputGravatarEmail } = this.state;

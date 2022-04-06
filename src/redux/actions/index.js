@@ -1,4 +1,4 @@
-import fetchToken from '../../api/getToken';
+import { fetchToken } from '../../api/handleAPI';
 
 const successRequest = (payload) => ({
   type: 'SUCCESS_REQUEST',
