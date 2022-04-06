@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import * as EmailValidator from 'email-validator';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import md5 from 'crypto-js/md5';
 import getToken from '../../redux/actions';
 
-class Login extends React.Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
