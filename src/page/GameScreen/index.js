@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { fetchQuestionsAndAnswers } from '../../api/handleAPI';
 import Answers from '../../components/Answers';
 import Question from '../../components/Question';
+import Header from '../../components/Header';
 
 class GameScreen extends React.Component {
   constructor(props) {
@@ -58,6 +59,7 @@ class GameScreen extends React.Component {
     const { questions, index } = this.state;
     return (
       <div>
+        <Header />
         <Question
           category={ questions[index].category }
           question={ questions[index].question }

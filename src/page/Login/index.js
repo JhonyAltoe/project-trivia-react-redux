@@ -3,6 +3,7 @@ import * as EmailValidator from 'email-validator';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import md5 from 'crypto-js/md5';
 import getToken from '../../redux/actions';
 
 class Login extends React.Component {
@@ -32,6 +33,12 @@ class Login extends React.Component {
     const { history, fetchAPI } = this.props;
     await fetchAPI();
     history.push('/gamescreen');
+    fetchAPI();
+    const { inputPlayerName, inputGravatarEmail } = this.state;
+    const thumbnail = `https://www.gravatar.com/avatar/${md5(inputGravatarEmail).toString()}`;
+    localStorage.setItem(
+      'ranking', JSON.stringify({ name: inputPlayerName, score: 0, picture: thumbnail }),
+    );
   }
 
   render() {
