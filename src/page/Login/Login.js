@@ -1,6 +1,5 @@
 import React from 'react';
 import * as EmailValidator from 'email-validator';
-import md5 from 'crypto-js/md5';
 
 class Login extends React.Component {
   constructor(props) {
@@ -23,14 +22,6 @@ class Login extends React.Component {
     const validate = ((inputPlayerName.length >= minCharacters)
       && EmailValidator.validate(inputGravatarEmail));
     if (validate) this.setState({ bttDisabled: false });
-  }
-
-  startGame = () => {
-    const { inputPlayerName, inputGravatarEmail } = this.state;
-    const thumbnail = `https://www.gravatar.com/avatar/${md5(inputGravatarEmail).toString()}`;
-    localStorage.setItem(
-      'ranking', { name: inputPlayerName, score: 0, picture: thumbnail },
-    );
   }
 
   render() {
