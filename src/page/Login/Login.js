@@ -54,7 +54,6 @@ class Login extends React.Component {
           disabled={ bttDisabled }
           type="button"
           data-testid="btn-play"
-          onClick={ this.startGame }
         >
           Play
         </button>
