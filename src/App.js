@@ -6,6 +6,7 @@ import NotFound from './page/NotFound';
 import Config from './page/Config';
 import './App.css';
 import GameScreen from './page/GameScreen';
+import FeedBack from './page/FeedBack';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Route exact path="/" component={ Login } />
       <Route exact path="/configuracoes" component={ Config } />
       <Route exact path="/gamescreen" component={ GameScreen } />
+      <Route exact path="/feedback" component={ FeedBack } />
       <Route path="*" component={ NotFound } />
     </Switch>
   );
