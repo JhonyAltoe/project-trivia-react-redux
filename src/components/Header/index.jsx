@@ -19,7 +19,6 @@ class Header extends Component {
 
   getPlayerInfo() {
     const ranking = JSON.parse(localStorage.getItem('ranking'));
-    console.log(ranking);
     if (ranking) {
       this.setState({
         picture: ranking.picture, name: ranking.name, score: ranking.score });

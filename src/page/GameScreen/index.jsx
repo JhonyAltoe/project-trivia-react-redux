@@ -11,7 +11,10 @@ class GameScreen extends React.Component {
     super(props);
     this.state = {
       questions: [],
+      alternatives: [],
       index: 0,
+      borderCorrect: '',
+      borderWrong: '',
     };
   }
 
@@ -22,22 +25,31 @@ class GameScreen extends React.Component {
   mountQuestions = async () => {
     const { token } = this.props;
     const { results } = await fetchQuestionsAndAnswers(token);
-    this.setState({ questions: results });
+    this.setState({ questions: results }, () => {
+      this.generateAlternatives();
+    });
   }
 
   nextQuestion = () => {
     const { index, questions } = this.state;
     if (index < questions.length) {
-      this.setState({ index: index + 1 });
+      this.setState({
+        index: index + 1,
+        borderCorrect: '',
+        borderWrong: '',
+      }, () => {
+        this.generateAlternatives();
+      });
     }
   }
 
-  gererateAlternatives = () => {
+  generateAlternatives = () => {
     const { questions, index } = this.state;
     const alternatives = [
       questions[index].correct_answer, ...questions[index].incorrect_answers,
     ];
-    return this.shuffleArray(alternatives);
+    const shuffledAlternatives = this.shuffleArray(alternatives);
+    this.setState({ alternatives: shuffledAlternatives });
   }
 
   shuffleArray = (array) => {
@@ -55,8 +67,15 @@ class GameScreen extends React.Component {
     return shuffledArray;
   }
 
+  showAnswersResults = () => {
+    this.setState({
+      borderCorrect: 'border-correct',
+      borderWrong: 'border-wrong',
+    });
+  }
+
   game = () => {
-    const { questions, index } = this.state;
+    const { questions, index, borderCorrect, borderWrong, alternatives } = this.state;
     return (
       <div>
         <Header />
@@ -65,10 +84,21 @@ class GameScreen extends React.Component {
           question={ questions[index].question }
         />
         <Answers
-          alternatives={ this.gererateAlternatives() }
+          alternatives={ alternatives }
           correct={ questions[index].correct_answer }
+          showAnswersResults={ this.showAnswersResults }
+          borderCorrect={ borderCorrect }
+          borderWrong={ borderWrong }
         />
-        <button type="submit" onClick={ this.nextQuestion }>PRÓXIMA</button>
+        { borderCorrect !== '' && (
+          <button
+            type="submit"
+            data-testid="btn-next"
+            onClick={ this.nextQuestion }
+          >
+            PRÓXIMA
+          </button>
+        )}
       </div>
     );
   }

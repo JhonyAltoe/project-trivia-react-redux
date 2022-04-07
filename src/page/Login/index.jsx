@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import * as EmailValidator from 'email-validator';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import getToken from '../../redux/actions';
 import './styles.css';
 import triviaImg from '../../images/trivia.png';
 
-class Login extends React.Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
