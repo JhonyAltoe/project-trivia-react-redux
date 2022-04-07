@@ -7,7 +7,10 @@ class Answers extends Component {
     const { alternatives, correct,
       showAnswersResults, borderCorrect, borderWrong, bttDisabled } = this.props;
     return (
-      <div data-testid="answer-options">
+      <div
+        className="answers-container"
+        data-testid="answer-options"
+      >
         { alternatives.map((each, index) => {
           if (each === correct) {
             return (

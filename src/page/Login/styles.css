@@ -1,12 +1,16 @@
 :root {
 
-  --azulEscuro: rgba(10, 78, 177, 1) 76%;
+  --darkBlue: rgba(10, 78, 177, 1);
 
-  --azulMedio: rgba(57, 111, 190, 1) 37%;
+  --middleBlue: rgba(57, 111, 190, 1);
 
-  --azulClaro: rgba(123, 154, 200, 1) 11%;
+  --lightBlue: rgba(123, 154, 200, 1);
 
-  --radialBlue: var(--azulClaro) , var(--azulMedio) , var(--azulEscuro);
+  --radialBlue: var(--lightBlue) 11% , var(--middleBlue) 37% , var(--darkBlue) 76%;
+
+  --hotPink: #ea4c89;
+
+  --darknessPurple: #402d53;
 }
 
 .container-login-main {
@@ -47,7 +51,7 @@
 }
 
 .container-login form button {
-  background: #ea4c89;
+  background: var(--hotPink);
   border: none;
   border-radius: 5px;
   color: white;
@@ -66,7 +70,7 @@
 }
 
 .container-login a button {
-  background: #402d53;
+  background: var(--darknessPurple);
   border: none;
   border-radius: 5px;
   color: white;
