@@ -21,4 +21,9 @@ const getToken = () => (
   }
 );
 
+export const secondsTimer = (payload) => ({
+  type: 'SECONDS_TIMER',
+  payload,
+});
+
 export default getToken;

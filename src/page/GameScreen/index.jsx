@@ -6,6 +6,7 @@ import Answers from '../../components/Answers';
 import Question from '../../components/Question';
 import Header from '../../components/Header';
 import Timer from '../../components/Timer';
+import { secondsTimer } from '../../redux/actions';
 
 class GameScreen extends React.Component {
   constructor(props) {
@@ -34,13 +35,21 @@ class GameScreen extends React.Component {
 
   nextQuestion = () => {
     const { index, questions } = this.state;
-    if (index < questions.length - 1) {
+    if (index === questions.length - 1) {
+      const { history } = this.props;
+      history.push('/feedback');
+    }
+    if (index < questions.length) {
       this.setState({
         index: index + 1,
         borderCorrect: '',
         borderWrong: '',
+        bttDisabled: false,
       }, () => {
         this.generateAlternatives();
+        const { time } = this.props;
+        const thirty = 30;
+        time(thirty);
       });
     }
   }
@@ -55,7 +64,7 @@ class GameScreen extends React.Component {
   }
 
   timeOutFunc = () => {
-    this.setState({ bttDisabled: true });
+    this.setState({ bttDisabled: true }, () => this.showAnswersResults());
   }
 
   shuffleArray = (array) => {
@@ -78,6 +87,8 @@ class GameScreen extends React.Component {
       borderCorrect: 'border-correct',
       borderWrong: 'border-wrong',
     });
+    const { time } = this.props;
+    time(0);
   }
 
   game = () => {
@@ -133,8 +144,12 @@ const mapStateToProps = (state) => ({
   token: state.token,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  time: (payload) => dispatch(secondsTimer(payload)),
+});
+
 GameScreen.propTypes = {
   token: PropTypes.object,
 }.isRequired;
 
-export default connect(mapStateToProps)(GameScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);
