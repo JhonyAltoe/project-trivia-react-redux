@@ -17,7 +17,7 @@ class Answers extends Component {
                 type="button"
                 className={ borderCorrect }
                 key={ index }
-                onClick={ showAnswersResults }
+                onClick={ () => showAnswersResults(each) }
               >
                 { each }
               </button>
@@ -30,7 +30,7 @@ class Answers extends Component {
               type="button"
               className={ borderWrong }
               key={ index }
-              onClick={ showAnswersResults }
+              onClick={ () => showAnswersResults(each) }
             >
               { each }
             </button>

@@ -10,7 +10,7 @@ const failedRequest = (payload) => ({
   payload,
 });
 
-const getToken = () => (
+export const getToken = () => (
   async (dispatch) => {
     try {
       const data = await fetchToken();
@@ -26,4 +26,7 @@ export const secondsTimer = (payload) => ({
   payload,
 });
 
-export default getToken;
+export const attScore = (payload) => ({
+  type: 'UPDATE_SCORE',
+  payload,
+});
