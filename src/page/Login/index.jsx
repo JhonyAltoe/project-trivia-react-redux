@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import md5 from 'crypto-js/md5';
 import getToken from '../../redux/actions';
+import './styles.css';
+import triviaImg from '../../images/trivia.png';
 
 class Login extends React.Component {
   constructor(props) {
@@ -44,9 +46,10 @@ class Login extends React.Component {
   render() {
     const { bttDisabled, inputPlayerName, inputGravatarEmail } = this.state;
     return (
-      <div>
-        <form>
-          <label htmlFor="input-player-name">
+      <main className="container-login-main">
+        <div className="container-login">
+          <img src={ triviaImg } alt="Logo trivia" />
+          <form>
             <input
               id="input-player-name"
               name="inputPlayerName"
@@ -56,8 +59,6 @@ class Login extends React.Component {
               type="text"
               placeholder="Digite seu nickname"
             />
-          </label>
-          <label htmlFor="input-gravatar-email">
             <input
               id="input-gravatar-email"
               name="inputGravatarEmail"
@@ -67,19 +68,21 @@ class Login extends React.Component {
               type="text"
               placeholder="Digite seu email"
             />
-          </label>
-          <button
-            disabled={ bttDisabled }
-            type="button"
-            data-testid="btn-play"
-            onClick={ this.startGame }
-          >
-            Play
-          </button>
-        </form>
-        <div>
-          <Link to="/configuracoes">
             <button
+              className="button-loging"
+              disabled={ bttDisabled }
+              type="button"
+              data-testid="btn-play"
+              onClick={ this.startGame }
+            >
+              Play
+            </button>
+          </form>
+          <Link
+            to="/configuracoes"
+          >
+            <button
+              className="button-loging"
               type="button"
               data-testid="btn-settings"
             >
@@ -87,7 +90,7 @@ class Login extends React.Component {
             </button>
           </Link>
         </div>
-      </div>
+      </main>
     );
   }
 }

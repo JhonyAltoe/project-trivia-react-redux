@@ -1,0 +1,83 @@
+:root {
+
+  --azulEscuro: rgba(10, 78, 177, 1) 76%;
+
+  --azulMedio: rgba(57, 111, 190, 1) 37%;
+
+  --azulClaro: rgba(123, 154, 200, 1) 11%;
+
+  --radialBlue: var(--azulClaro) , var(--azulMedio) , var(--azulEscuro);
+}
+
+.container-login-main {
+  background: radial-gradient(circle, var(--radialBlue));
+  display: flex;
+  justify-content: center;
+}
+
+.container-login {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  max-width: 800px;
+}
+
+.container-login img {
+  margin-bottom: 50px;
+  width: 70%;
+}
+
+.container-login form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.container-login input {
+  background: #e6e6e6;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 12px;
+  padding: 24px;
+  width: 50%;
+}
+
+.container-login form button {
+  background: #ea4c89;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 12px 0 84px;
+  padding: 24px;
+  transition: filter 0.2s;
+  width: 50%;
+}
+
+.container-login a {
+  text-align: center;
+  width: 100%;
+}
+
+.container-login a button {
+  background: #402d53;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 12px 0;
+  padding: 12px;
+  transition: filter 0.2s;
+}
+
+.container-login button:hover {
+  filter: brightness(0.8);
+}

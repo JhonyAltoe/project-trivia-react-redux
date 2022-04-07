@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './page/Login';
 import NotFound from './page/NotFound';
 import Config from './page/Config';
-import './App.css';
 import GameScreen from './page/GameScreen';
 import FeedBack from './page/FeedBack';
 
