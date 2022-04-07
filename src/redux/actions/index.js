@@ -21,4 +21,9 @@ const getToken = () => (
   }
 );
 
-export default getToken;
+const attScore = (payload) => ({
+  type: 'UPDATE_SCORE',
+  payload,
+});
+
+export { getToken, attScore };

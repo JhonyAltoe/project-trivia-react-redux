@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import propTypes from 'prop-types';
 
 class Header extends Component {
   constructor(props) {
@@ -7,7 +8,6 @@ class Header extends Component {
     this.state = {
       picture: '',
       name: '',
-      score: 0,
     };
 
     this.getPlayerInfo = this.getPlayerInfo.bind(this);
@@ -19,16 +19,16 @@ class Header extends Component {
 
   getPlayerInfo() {
     const ranking = JSON.parse(localStorage.getItem('ranking'));
-    if (ranking) {
-      this.setState({
-        picture: ranking.picture, name: ranking.name, score: ranking.score });
-    }
+    this.setState({
+      picture: ranking.picture, name: ranking.name });
   }
 
   render() {
-    const { picture, name, score } = this.state;
+    const { picture, name } = this.state;
+    const { info } = this.props;
     return (
       <div>
+        { console.log(info) }
         <img
           data-testid="header-profile-picture"
           src={ picture }
@@ -37,10 +37,14 @@ class Header extends Component {
           width="300"
         />
         <p data-testid="header-player-name">{ name }</p>
-        <p data-testid="header-score">{ score }</p>
+        <p data-testid="header-score">{ info.score }</p>
       </div>
     );
   }
 }
+
+Header.propTypes = {
+  info: propTypes.string,
+}.isRequired;
 
 export default Header;

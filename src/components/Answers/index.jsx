@@ -6,7 +6,6 @@ class Answers extends Component {
   render() {
     const { alternatives, correct,
       showAnswersResults, borderCorrect, borderWrong } = this.props;
-    console.log(correct);
     return (
       <div data-testid="answer-options">
         { alternatives.map((each, index) => {
@@ -17,7 +16,7 @@ class Answers extends Component {
                 type="button"
                 className={ borderCorrect }
                 key={ index }
-                onClick={ showAnswersResults }
+                onClick={ () => showAnswersResults(each) }
               >
                 { each }
               </button>
@@ -29,7 +28,7 @@ class Answers extends Component {
               type="button"
               className={ borderWrong }
               key={ index }
-              onClick={ showAnswersResults }
+              onClick={ () => showAnswersResults(each) }
             >
               { each }
             </button>
