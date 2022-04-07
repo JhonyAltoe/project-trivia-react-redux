@@ -90,7 +90,15 @@ class GameScreen extends React.Component {
           borderCorrect={ borderCorrect }
           borderWrong={ borderWrong }
         />
-        <button type="submit" onClick={ this.nextQuestion }>PRÓXIMA</button>
+        { borderCorrect !== '' && (
+          <button
+            type="submit"
+            data-testid="btn-next"
+            onClick={ this.nextQuestion }
+          >
+            PRÓXIMA
+          </button>
+        )}
       </div>
     );
   }
