@@ -113,7 +113,6 @@ class GameScreen extends React.Component {
       }
       if (questions[index].difficulty === 'medium') {
         newScore = score + (X + (stopWatch * MEDIUM));
-        localStorage.setItem(
           'ranking', JSON.stringify({ name, score: newScore, picture }),
         );
         this.setState({ info: { name, score: newScore, picture } });
@@ -187,6 +186,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   time: (payload) => dispatch(secondsTimer(payload)),
+  changeScore: (state) => dispatch(attScore(state)),
+});
+
+const mapDispatchToProps = (dispatch) => ({
   changeScore: (state) => dispatch(attScore(state)),
 });
 

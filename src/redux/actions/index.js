@@ -30,3 +30,4 @@ export const attScore = (payload) => ({
   type: 'UPDATE_SCORE',
   payload,
 });
+
