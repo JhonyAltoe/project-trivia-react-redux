@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './styles.css';
+import propTypes from 'prop-types';
 import triviaImg from '../../images/trivia.png';
 
 class Header extends Component {
@@ -9,7 +10,6 @@ class Header extends Component {
     this.state = {
       picture: '',
       name: '',
-      score: 0,
     };
 
     this.getPlayerInfo = this.getPlayerInfo.bind(this);
@@ -21,14 +21,13 @@ class Header extends Component {
 
   getPlayerInfo() {
     const ranking = JSON.parse(localStorage.getItem('ranking'));
-    if (ranking) {
-      this.setState({
-        picture: ranking.picture, name: ranking.name, score: ranking.score });
-    }
+    this.setState({
+      picture: ranking.picture, name: ranking.name });
   }
 
   render() {
-    const { picture, name, score } = this.state;
+    const { picture, name } = this.state;
+    const { info } = this.props;
     return (
       <div className="header-component">
         <img
@@ -40,7 +39,7 @@ class Header extends Component {
           <div>
             Pontuação:
             {' '}
-            <span data-testid="header-score">{ score }</span>
+            <span data-testid="header-score">{ info.score }</span>
           </div>
           <img
             className="profile-image"
@@ -53,5 +52,9 @@ class Header extends Component {
     );
   }
 }
+
+Header.propTypes = {
+  info: propTypes.string,
+}.isRequired;
 
 export default Header;

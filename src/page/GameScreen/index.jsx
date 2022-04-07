@@ -5,6 +5,7 @@ import { fetchQuestionsAndAnswers } from '../../api/handleAPI';
 import Answers from '../../components/Answers';
 import Question from '../../components/Question';
 import Header from '../../components/Header';
+import { attScore } from '../../redux/actions';
 import Timer from '../../components/Timer';
 import './styles.css';
 
@@ -17,6 +18,7 @@ class GameScreen extends React.Component {
       index: 0,
       borderCorrect: '',
       borderWrong: '',
+      info: { name: '', score: 0, picture: '' },
       bttDisabled: false,
     };
   }
@@ -74,11 +76,50 @@ class GameScreen extends React.Component {
     return shuffledArray;
   }
 
-  showAnswersResults = () => {
+  showAnswersResults = (target) => {
     this.setState({
       borderCorrect: 'border-correct',
       borderWrong: 'border-wrong',
     });
+    this.updateScore(target);
+  }
+
+  updateScore = (resposta) => {
+    const { questions, index } = this.state;
+    const { changeScore } = this.props;
+    const X = 10;
+    const HARD = 3;
+    const MEDIUM = 2;
+    const EASY = 1;
+    let newScore = 0;
+    const { name, picture, score } = JSON.parse(localStorage.getItem('ranking'));
+    const timer = 1;
+    if (resposta === questions[index].correct_answer) {
+      if (questions[index].difficulty === 'hard') {
+        newScore = score + (X + (timer * HARD));
+        localStorage.setItem(
+          'ranking', JSON.stringify({ name, score: newScore, picture }),
+        );
+        this.setState({ info: { name, score: newScore, picture } });
+        changeScore(newScore);
+      }
+      if (questions[index].difficulty === 'medium') {
+        newScore = score + (X + (timer * MEDIUM));
+        localStorage.setItem(
+          'ranking', JSON.stringify({ name, score: newScore, picture }),
+        );
+        this.setState({ info: { name, score: newScore, picture } });
+        changeScore(newScore);
+      }
+      if (questions[index].difficulty === 'easy') {
+        newScore = score + (X + (timer * EASY));
+        localStorage.setItem(
+          'ranking', JSON.stringify({ name, score: newScore, picture }),
+        );
+        this.setState({ info: { name, score: newScore, picture } });
+        changeScore(newScore);
+      }
+    }
   }
 
   game = () => {
@@ -88,11 +129,12 @@ class GameScreen extends React.Component {
       borderCorrect,
       borderWrong,
       alternatives,
+      info,
       bttDisabled,
     } = this.state;
     return (
       <section className="gamescreen-component">
-        <Header />
+        <Header info={ info } />
         <div className="gamescreen-questions-field">
           <div className="questions-area">
             <Question
@@ -140,8 +182,12 @@ const mapStateToProps = (state) => ({
   token: state.token,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  changeScore: (state) => dispatch(attScore(state)),
+});
+
 GameScreen.propTypes = {
   token: PropTypes.object,
 }.isRequired;
 
-export default connect(mapStateToProps)(GameScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(GameScreen);
