@@ -6,6 +6,7 @@ import Answers from '../../components/Answers';
 import Question from '../../components/Question';
 import Header from '../../components/Header';
 import { attScore } from '../../redux/actions';
+import Timer from '../../components/Timer';
 
 class GameScreen extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class GameScreen extends React.Component {
       borderCorrect: '',
       borderWrong: '',
       info: { name: '', score: 0, picture: '' },
+      bttDisabled: false,
     };
   }
 
@@ -34,7 +36,7 @@ class GameScreen extends React.Component {
 
   nextQuestion = () => {
     const { index, questions } = this.state;
-    if (index < questions.length) {
+    if (index < questions.length - 1) {
       this.setState({
         index: index + 1,
         borderCorrect: '',
@@ -52,6 +54,10 @@ class GameScreen extends React.Component {
     ];
     const shuffledAlternatives = this.shuffleArray(alternatives);
     this.setState({ alternatives: shuffledAlternatives });
+  }
+
+  timeOutFunc = () => {
+    this.setState({ bttDisabled: true });
   }
 
   shuffleArray = (array) => {
@@ -123,6 +129,7 @@ class GameScreen extends React.Component {
       borderWrong,
       alternatives,
       info,
+      bttDisabled,
     } = this.state;
     return (
       <div>
@@ -132,6 +139,7 @@ class GameScreen extends React.Component {
           question={ questions[index].question }
         />
         <Answers
+          bttDisabled={ bttDisabled }
           alternatives={ alternatives }
           correct={ questions[index].correct_answer }
           showAnswersResults={ this.showAnswersResults }
@@ -147,6 +155,7 @@ class GameScreen extends React.Component {
             PRÓXIMA
           </button>
         )}
+        <Timer timeOutFunc={ this.timeOutFunc } />
       </div>
     );
   }

@@ -5,13 +5,14 @@ import './styles.css';
 class Answers extends Component {
   render() {
     const { alternatives, correct,
-      showAnswersResults, borderCorrect, borderWrong } = this.props;
+      showAnswersResults, borderCorrect, borderWrong, bttDisabled } = this.props;
     return (
       <div data-testid="answer-options">
         { alternatives.map((each, index) => {
           if (each === correct) {
             return (
               <button
+                disabled={ bttDisabled }
                 data-testid="correct-answer"
                 type="button"
                 className={ borderCorrect }
@@ -24,6 +25,7 @@ class Answers extends Component {
           }
           return (
             <button
+              disabled={ bttDisabled }
               data-testid={ `wrong-answer-${index}` }
               type="button"
               className={ borderWrong }
