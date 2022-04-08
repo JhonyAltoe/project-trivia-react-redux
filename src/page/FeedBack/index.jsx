@@ -29,7 +29,9 @@ class FeedBack extends React.Component {
     return (
       <div className="feedback-container">
         <Header info={ ranking } />
-        {this.verifyScore()}
+        <div className="feedback-field">
+          {this.verifyScore()}
+        </div>
         <button
           data-testid="btn-play-again"
           type="button"
