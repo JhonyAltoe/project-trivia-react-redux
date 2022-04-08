@@ -27,7 +27,6 @@ class FeedBack extends React.Component {
   };
 
   redirectToRanking = () => {
-    console.log('fui chamado');
     const { history } = this.props;
     history.push('/ranking');
   }
