@@ -7,6 +7,7 @@ import Question from '../../components/Question';
 import Header from '../../components/Header';
 import { attScore, secondsTimer } from '../../redux/actions';
 import Timer from '../../components/Timer';
+import './styles.css';
 
 class GameScreen extends React.Component {
   constructor(props) {
@@ -141,31 +142,37 @@ class GameScreen extends React.Component {
       bttDisabled,
     } = this.state;
     return (
-      <div>
+      <section className="gamescreen-component">
         <Header info={ info } />
-        <Question
-          category={ questions[index].category }
-          question={ questions[index].question }
-        />
-        <Answers
-          bttDisabled={ bttDisabled }
-          alternatives={ alternatives }
-          correct={ questions[index].correct_answer }
-          showAnswersResults={ this.showAnswersResults }
-          borderCorrect={ borderCorrect }
-          borderWrong={ borderWrong }
-        />
-        { borderCorrect !== '' && (
-          <button
-            type="submit"
-            data-testid="btn-next"
-            onClick={ this.nextQuestion }
-          >
-            PRÓXIMA
-          </button>
-        )}
+        <div className="gamescreen-questions-field">
+          <div className="questions-area">
+            <Question
+              category={ questions[index].category }
+              question={ questions[index].question }
+            />
+            <Answers
+              bttDisabled={ bttDisabled }
+              alternatives={ alternatives }
+              correct={ questions[index].correct_answer }
+              showAnswersResults={ this.showAnswersResults }
+              borderCorrect={ borderCorrect }
+              borderWrong={ borderWrong }
+            />
+          </div>
+          <div className="button-area">
+            { borderCorrect !== '' && (
+              <button
+                type="submit"
+                data-testid="btn-next"
+                onClick={ this.nextQuestion }
+              >
+                PRÓXIMA
+              </button>
+            )}
+          </div>
+        </div>
         <Timer timeOutFunc={ this.timeOutFunc } />
-      </div>
+      </section>
     );
   }
 

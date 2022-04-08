@@ -1,13 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.css';
 
 class Question extends React.Component {
   render() {
     const { category, question } = this.props;
     return (
-      <div>
-        <h3 data-testid="question-category">{ category }</h3>
-        <p data-testid="question-text">{ question }</p>
+      <div className="question-container">
+        <div
+          className="question-category"
+          data-testid="question-category"
+        >
+          { category }
+        </div>
+        <div
+          className="question-text"
+          data-testid="question-text"
+        >
+          { question }
+        </div>
       </div>
     );
   }

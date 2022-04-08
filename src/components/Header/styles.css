@@ -1,0 +1,29 @@
+.header-component {
+  align-items: center;
+  display: flex;
+  height: 90px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  max-width: 800px;
+  padding: 0 8px;
+  width: 100%;
+}
+
+.header-component > img {
+  height: 60%;
+}
+
+.header-user-infos {
+  align-items: center;
+  color: white;
+  display: flex;
+  font-weight: 700;
+  height: 50%;
+  justify-content: space-between;
+  width: 340px;
+}
+
+.header-user-infos img {
+  border-radius: 50%;
+  height: 100%;
+}
