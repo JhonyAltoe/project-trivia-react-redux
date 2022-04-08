@@ -1,10 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Header from '../../components/Header';
 
 class FeedBack extends React.Component {
   constructor() {
     super();
     this.state = {};
+  }
+
+  resetGame = () => {
+    const { history } = this.props;
+    history.push('/');
   }
 
   verifyScore = () => {
@@ -23,9 +29,22 @@ class FeedBack extends React.Component {
       <div>
         <Header info={ ranking } />
         {this.verifyScore()}
+        <button
+          data-testid="btn-play-again"
+          type="button"
+          onClick={ this.resetGame }
+        >
+          Play Again
+        </button>
       </div>
     );
   }
 }
+
+FeedBack.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+}.isRequired;
 
 export default FeedBack;
