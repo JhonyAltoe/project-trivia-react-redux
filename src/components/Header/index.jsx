@@ -49,6 +49,7 @@ class Header extends Component {
               alt="player avatar"
             />
           </div>
+        </div>
       </div>
     );
   }
