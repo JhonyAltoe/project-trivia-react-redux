@@ -8,6 +8,8 @@ class FeedBack extends React.Component {
   constructor() {
     super();
     this.state = {};
+
+    this.redirectToRanking = this.redirectToRanking.bind(this);
   }
 
   resetGame = () => {
@@ -24,6 +26,12 @@ class FeedBack extends React.Component {
       </p>);
   };
 
+  redirectToRanking = () => {
+    console.log('fui chamado');
+    const { history } = this.props;
+    history.push('/ranking');
+  }
+
   render() {
     const { score, assertions } = this.props;
     return (
@@ -38,6 +46,13 @@ class FeedBack extends React.Component {
           onClick={ this.resetGame }
         >
           Play Again
+        </button>
+        <button
+          data-testid="btn-ranking"
+          type="button"
+          onClick={ this.redirectToRanking }
+        >
+          VER RANKING
         </button>
       </div>
     );
