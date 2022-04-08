@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import './styles.css';
 import propTypes from 'prop-types';
+import triviaImg from '../../images/trivia.png';
 
 class Header extends Component {
   constructor(props) {
@@ -27,16 +29,27 @@ class Header extends Component {
     const { picture, name } = this.state;
     const { info } = this.props;
     return (
-      <div>
-        <img
-          data-testid="header-profile-picture"
-          src={ picture }
-          alt="player avatar"
-          height="300"
-          width="300"
-        />
-        <p data-testid="header-player-name">{ name }</p>
-        <p data-testid="header-score">{ info.score }</p>
+      <div className="header-component">
+        <div>
+          <img
+            src={ triviaImg }
+            alt="Logo trivia"
+          />
+          <div className="header-user-infos">
+            <div data-testid="header-player-name">{ name }</div>
+            <div>
+              Pontuação:
+              {' '}
+              <span data-testid="header-score">{ info.score }</span>
+            </div>
+            <img
+              className="profile-image"
+              data-testid="header-profile-picture"
+              src={ picture }
+              alt="player avatar"
+            />
+          </div>
+        </div>
       </div>
     );
   }
