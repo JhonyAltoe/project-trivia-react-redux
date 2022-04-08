@@ -44,6 +44,12 @@ class GameScreen extends React.Component {
   nextQuestion = () => {
     const { index, questions } = this.state;
     if (index === questions.length - 1) {
+      const ranking = getStorage('ranking');
+      if (getStorage('rankingPlayers') === null) {
+        setStorage('rankingPlayers', [ranking]);
+      } else {
+        setStorage('rankingPlayers', [...getStorage('rankingPlayers'), ranking]);
+      }
       const { history } = this.props;
       history.push('/feedback');
     }
