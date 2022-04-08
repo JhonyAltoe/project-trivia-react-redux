@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles.css';
 import propTypes from 'prop-types';
+import { connect } from 'react-redux';
 import triviaImg from '../../images/trivia.png';
 
 class Header extends Component {
@@ -27,7 +28,7 @@ class Header extends Component {
 
   render() {
     const { picture, name } = this.state;
-    const { info } = this.props;
+    const { score } = this.props;
     return (
       <div className="header-component">
         <div>
@@ -40,7 +41,7 @@ class Header extends Component {
             <div>
               Pontuação:
               {' '}
-              <span data-testid="header-score">{ info.score }</span>
+              <span data-testid="header-score">{ score }</span>
             </div>
             <img
               className="profile-image"
@@ -55,8 +56,13 @@ class Header extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  score: state.player.score,
+});
+
 Header.propTypes = {
   info: propTypes.string,
+  score: propTypes.number,
 }.isRequired;
 
-export default Header;
+export default connect(mapStateToProps)(Header);
