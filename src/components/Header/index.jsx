@@ -30,24 +30,25 @@ class Header extends Component {
     const { info } = this.props;
     return (
       <div className="header-component">
-        <img
-          src={ triviaImg }
-          alt="Logo trivia"
-        />
-        <div className="header-user-infos">
-          <div data-testid="header-player-name">{ name }</div>
-          <div>
-            Pontuação:
-            {' '}
-            <span data-testid="header-score">{ info.score }</span>
-          </div>
+        <div>
           <img
-            className="profile-image"
-            data-testid="header-profile-picture"
-            src={ picture }
-            alt="player avatar"
+            src={ triviaImg }
+            alt="Logo trivia"
           />
-        </div>
+          <div className="header-user-infos">
+            <div data-testid="header-player-name">{ name }</div>
+            <div>
+              Pontuação:
+              {' '}
+              <span data-testid="header-score">{ info.score }</span>
+            </div>
+            <img
+              className="profile-image"
+              data-testid="header-profile-picture"
+              src={ picture }
+              alt="player avatar"
+            />
+          </div>
       </div>
     );
   }

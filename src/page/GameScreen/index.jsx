@@ -5,7 +5,7 @@ import { fetchQuestionsAndAnswers } from '../../api/handleAPI';
 import Answers from '../../components/Answers';
 import Question from '../../components/Question';
 import Header from '../../components/Header';
-import { attScore } from '../../redux/actions';
+import { attScore, secondsTimer } from '../../redux/actions';
 import Timer from '../../components/Timer';
 import './styles.css';
 
@@ -37,13 +37,21 @@ class GameScreen extends React.Component {
 
   nextQuestion = () => {
     const { index, questions } = this.state;
-    if (index < questions.length - 1) {
+    if (index === questions.length - 1) {
+      const { history } = this.props;
+      history.push('/feedback');
+    }
+    if (index < questions.length) {
       this.setState({
         index: index + 1,
         borderCorrect: '',
         borderWrong: '',
+        bttDisabled: false,
       }, () => {
         this.generateAlternatives();
+        const { time } = this.props;
+        const thirty = 30;
+        time(thirty);
       });
     }
   }
@@ -58,7 +66,7 @@ class GameScreen extends React.Component {
   }
 
   timeOutFunc = () => {
-    this.setState({ bttDisabled: true });
+    this.setState({ bttDisabled: true }, () => this.showAnswersResults());
   }
 
   shuffleArray = (array) => {
@@ -81,22 +89,23 @@ class GameScreen extends React.Component {
       borderCorrect: 'border-correct',
       borderWrong: 'border-wrong',
     });
+    const { time } = this.props;
+    time(0);
     this.updateScore(target);
   }
 
   updateScore = (resposta) => {
     const { questions, index } = this.state;
-    const { changeScore } = this.props;
+    const { changeScore, stopWatch } = this.props;
     const X = 10;
     const HARD = 3;
     const MEDIUM = 2;
     const EASY = 1;
     let newScore = 0;
     const { name, picture, score } = JSON.parse(localStorage.getItem('ranking'));
-    const timer = 1;
     if (resposta === questions[index].correct_answer) {
       if (questions[index].difficulty === 'hard') {
-        newScore = score + (X + (timer * HARD));
+        newScore = score + (X + (stopWatch * HARD));
         localStorage.setItem(
           'ranking', JSON.stringify({ name, score: newScore, picture }),
         );
@@ -104,7 +113,7 @@ class GameScreen extends React.Component {
         changeScore(newScore);
       }
       if (questions[index].difficulty === 'medium') {
-        newScore = score + (X + (timer * MEDIUM));
+        newScore = score + (X + (stopWatch * MEDIUM));
         localStorage.setItem(
           'ranking', JSON.stringify({ name, score: newScore, picture }),
         );
@@ -112,7 +121,7 @@ class GameScreen extends React.Component {
         changeScore(newScore);
       }
       if (questions[index].difficulty === 'easy') {
-        newScore = score + (X + (timer * EASY));
+        newScore = score + (X + (stopWatch * EASY));
         localStorage.setItem(
           'ranking', JSON.stringify({ name, score: newScore, picture }),
         );
@@ -180,9 +189,11 @@ class GameScreen extends React.Component {
 
 const mapStateToProps = (state) => ({
   token: state.token,
+  stopWatch: state.reducerTimer.seconds,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  time: (payload) => dispatch(secondsTimer(payload)),
   changeScore: (state) => dispatch(attScore(state)),
 });
 
