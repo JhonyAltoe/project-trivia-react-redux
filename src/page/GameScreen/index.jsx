@@ -7,6 +7,12 @@ import Question from '../../components/Question';
 import Header from '../../components/Header';
 import { attScore, secondsTimer } from '../../redux/actions';
 import Timer from '../../components/Timer';
+import { setStorage, getStorage } from '../../services/handleLocalStorage';
+
+const DEZ = 10;
+const HARD = 3;
+const MEDIUM = 2;
+const EASY = 1;
 
 class GameScreen extends React.Component {
   constructor(props) {
@@ -83,50 +89,37 @@ class GameScreen extends React.Component {
     return shuffledArray;
   }
 
-  showAnswersResults = (target) => {
+  showAnswersResults = (answer) => {
     this.setState({
       borderCorrect: 'border-correct',
       borderWrong: 'border-wrong',
     });
     const { time } = this.props;
     time(0);
-    this.updateScore(target);
+    this.updateScore(answer);
   }
 
-  updateScore = (resposta) => {
+  updateScore = (answer) => {
     const { questions, index } = this.state;
     const { changeScore, stopWatch } = this.props;
-    const X = 10;
-    const HARD = 3;
-    const MEDIUM = 2;
-    const EASY = 1;
+    const { name, picture, score, numberOfCorrectAnswers: NOCA } = getStorage('ranking');
+
     let newScore = 0;
-    const { name, picture, score } = JSON.parse(localStorage.getItem('ranking'));
-    if (resposta === questions[index].correct_answer) {
+    const numberOfCorrectAnswers = NOCA + 1;
+
+    if (answer === questions[index].correct_answer) {
       if (questions[index].difficulty === 'hard') {
-        newScore = score + (X + (stopWatch * HARD));
-        localStorage.setItem(
-          'ranking', JSON.stringify({ name, score: newScore, picture }),
-        );
-        this.setState({ info: { name, score: newScore, picture } });
-        changeScore(newScore);
+        newScore = score + (DEZ + (stopWatch * HARD));
+      } else if (questions[index].difficulty === 'medium') {
+        newScore = score + (DEZ + (stopWatch * MEDIUM));
+      } else if (questions[index].difficulty === 'easy') {
+        newScore = score + (DEZ + (stopWatch * EASY));
       }
-      if (questions[index].difficulty === 'medium') {
-        newScore = score + (X + (stopWatch * MEDIUM));
-        localStorage.setItem(
-          'ranking', JSON.stringify({ name, score: newScore, picture }),
-        );
-        this.setState({ info: { name, score: newScore, picture } });
-        changeScore(newScore);
-      }
-      if (questions[index].difficulty === 'easy') {
-        newScore = score + (X + (stopWatch * EASY));
-        localStorage.setItem(
-          'ranking', JSON.stringify({ name, score: newScore, picture }),
-        );
-        this.setState({ info: { name, score: newScore, picture } });
-        changeScore(newScore);
-      }
+      setStorage('ranking', {
+        name, score: newScore, picture, numberOfCorrectAnswers,
+      });
+      this.setState({ info: { name, score: newScore, picture } });
+      changeScore(newScore);
     }
   }
 

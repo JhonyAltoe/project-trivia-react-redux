@@ -11,8 +11,8 @@ class Timer extends React.Component {
   }
 
   componentDidMount() {
-    const MIL = 1000;
-    this.countdown = setInterval(() => this.timer(), MIL);
+    const oneSecond = 1000;
+    this.countdown = setInterval(() => this.timer(), oneSecond);
   }
 
   componentWillUnmount() {
