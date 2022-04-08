@@ -9,15 +9,74 @@
 
 .feedback-field {
   align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.feedback-field-infos {
   background-color: rgb(255, 255, 255, 0.2);
   border-radius: 30px;
+  box-shadow: 8px 8px 20px 9px rgba(26, 26, 26, 0.6);
   display: flex;
-  font-size: 40px;
+  flex-direction: column;
   font-weight: 700;
-  height: 80%;
+  height: 85%;
   justify-content: center;
-  margin-bottom: 20%;
   max-width: 700px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.37);
+  text-align: center;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.37);
   width: 80%;
 }
+
+.font-size-40 {
+  font-size: 40px;
+}
+
+.final-msg-game {
+  margin-bottom: 10%;
+}
+
+.feedback-field-button {
+  align-items: center;
+  display: flex;
+  height: 15%;
+  justify-content: center;
+  width: 100%;
+}
+
+.feedback-button {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 8px 8px 20px 9px rgba(0, 0, 0, 0.37);
+  color: rgb(219, 219, 219);
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 2px 0;
+  transition: filter 0.2s;
+}
+
+.feedback-container button:hover {
+  filter: brightness(0.8);
+}
+
+.font-size-30 {
+  font-size: 30px;
+}
+
+.color-button-purple {
+  align-self: center;
+  background: var(--darknessPurple);
+  margin-top: 20%;
+  padding: 8px;
+  width: 30%;
+}
+
+.color-button-pink {
+  background: var(--hotPink);
+  padding: 15px;
+  width: 50%;
+}
+
