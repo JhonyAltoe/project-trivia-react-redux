@@ -28,7 +28,6 @@ class Header extends Component {
     const { info } = this.props;
     return (
       <div>
-        { console.log(info) }
         <img
           data-testid="header-profile-picture"
           src={ picture }
