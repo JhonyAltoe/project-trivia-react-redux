@@ -11,6 +11,11 @@ class FeedBack extends React.Component {
     this.redirectToRanking = this.redirectToRanking.bind(this);
   }
 
+  resetGame = () => {
+    const { history } = this.props;
+    history.push('/');
+  }
+
   verifyScore = () => {
     const ranking = JSON.parse(localStorage.getItem('ranking'));
     const THREE = 3;
@@ -35,6 +40,13 @@ class FeedBack extends React.Component {
           {this.verifyScore()}
         </div>
         <button
+          data-testid="btn-play-again"
+          type="button"
+          onClick={ this.resetGame }
+        >
+          Play Again
+        </button>
+        <button
           data-testid="btn-ranking"
           type="button"
           onClick={ this.redirectToRanking }
@@ -48,8 +60,8 @@ class FeedBack extends React.Component {
 
 FeedBack.propTypes = {
   history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
-};
+    push: PropTypes.func,
+  }),
+}.isRequired;
 
 export default FeedBack;
