@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../../components/Header';
+import './styles.css';
 
 class FeedBack extends React.Component {
   constructor() {
@@ -11,17 +12,19 @@ class FeedBack extends React.Component {
     const ranking = JSON.parse(localStorage.getItem('ranking'));
     const THREE = 3;
     if (ranking.score < THREE) {
-      return <p data-testid="feedback-text">Could be better</p>;
+      return <div data-testid="feedback-text">Could be better</div>;
     }
-    return <p data-testid="feedback-text">Well Done!</p>;
+    return <div data-testid="feedback-text">Well Done!</div>;
   };
 
   render() {
     const ranking = JSON.parse(localStorage.getItem('ranking'));
     return (
-      <div>
+      <div className="feedback-container">
         <Header info={ ranking } />
-        {this.verifyScore()}
+        <div className="feedback-field">
+          {this.verifyScore()}
+        </div>
       </div>
     );
   }
