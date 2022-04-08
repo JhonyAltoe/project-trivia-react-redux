@@ -2,11 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../../components/Header';
+import './styles.css';
 
 class FeedBack extends React.Component {
   constructor() {
     super();
     this.state = {};
+  }
+
+  resetGame = () => {
+    const { history } = this.props;
+    history.push('/');
   }
 
   verifyScore = () => {
@@ -26,6 +32,13 @@ class FeedBack extends React.Component {
         {this.verifyScore()}
         <p data-testid="feedback-total-score">{score}</p>
         <p data-testid="feedback-total-question">{assertions}</p>
+        <button
+          data-testid="btn-play-again"
+          type="button"
+          onClick={ this.resetGame }
+        >
+          Play Again
+        </button>
       </div>
     );
   }
@@ -36,9 +49,12 @@ const mapStateToProps = (state) => ({
   assertions: state.player.assertions,
 });
 
+export default connect(mapStateToProps)(FeedBack);
+
 FeedBack.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
   score: PropTypes.number,
   assertions: PropTypes.number,
 }.isRequired;
-
-export default connect(mapStateToProps)(FeedBack);
