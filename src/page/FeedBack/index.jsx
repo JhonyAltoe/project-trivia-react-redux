@@ -11,10 +11,11 @@ class FeedBack extends React.Component {
   verifyScore = () => {
     const ranking = JSON.parse(localStorage.getItem('ranking'));
     const THREE = 3;
-    if (ranking.score < THREE) {
-      return <div data-testid="feedback-text">Could be better</div>;
-    }
-    return <div data-testid="feedback-text">Well Done!</div>;
+    console.log(ranking.numberOfCorrectAnswers);
+    return (
+      <p data-testid="feedback-text">
+        {ranking.numberOfCorrectAnswers < THREE ? 'Could be better...' : 'Well Done!'}
+      </p>);
   };
 
   render() {

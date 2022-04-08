@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.css';
 import { connect } from 'react-redux';
 import { secondsTimer } from '../../redux/actions';
 
@@ -11,8 +12,8 @@ class Timer extends React.Component {
   }
 
   componentDidMount() {
-    const MIL = 1000;
-    this.countdown = setInterval(() => this.timer(), MIL);
+    const oneSecond = 1000;
+    this.countdown = setInterval(() => this.timer(), oneSecond);
   }
 
   componentWillUnmount() {
@@ -32,7 +33,7 @@ class Timer extends React.Component {
 
   render() {
     const { stopWatch } = this.props;
-    return <div>{stopWatch}</div>;
+    return <div className="timer-container">{stopWatch}</div>;
   }
 }
 
@@ -46,6 +47,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 Timer.propTypes = {
   timeOutFunc: PropTypes.func,
+  stopWatch: PropTypes.number,
 }.isRequired;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Timer);

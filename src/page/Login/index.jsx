@@ -7,6 +7,7 @@ import md5 from 'crypto-js/md5';
 import { getToken } from '../../redux/actions';
 import './styles.css';
 import triviaImg from '../../images/trivia.png';
+import { setStorage } from '../../services/handleLocalStorage';
 
 class Login extends Component {
   constructor(props) {
@@ -38,9 +39,9 @@ class Login extends Component {
     fetchAPI();
     const { inputPlayerName, inputGravatarEmail } = this.state;
     const thumbnail = `https://www.gravatar.com/avatar/${md5(inputGravatarEmail).toString()}`;
-    localStorage.setItem(
-      'ranking', JSON.stringify({ name: inputPlayerName, score: 0, picture: thumbnail }),
-    );
+    setStorage('ranking', {
+      name: inputPlayerName, score: 0, picture: thumbnail, numberOfCorrectAnswers: 0,
+    });
   }
 
   render() {
