@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from '../../components/Header';
 import './styles.css';
@@ -15,23 +16,22 @@ class FeedBack extends React.Component {
   }
 
   verifyScore = () => {
-    const ranking = JSON.parse(localStorage.getItem('ranking'));
+    const { assertions } = this.props;
     const THREE = 3;
-    console.log(ranking.numberOfCorrectAnswers);
     return (
       <p data-testid="feedback-text">
-        {ranking.numberOfCorrectAnswers < THREE ? 'Could be better...' : 'Well Done!'}
+        {assertions < THREE ? 'Could be better...' : 'Well Done!'}
       </p>);
   };
 
   render() {
-    const ranking = JSON.parse(localStorage.getItem('ranking'));
+    const { score, assertions } = this.props;
     return (
-      <div className="feedback-container">
-        <Header info={ ranking } />
-        <div className="feedback-field">
-          {this.verifyScore()}
-        </div>
+      <div>
+        <Header />
+        {this.verifyScore()}
+        <p data-testid="feedback-total-score">{score}</p>
+        <p data-testid="feedback-total-question">{assertions}</p>
         <button
           data-testid="btn-play-again"
           type="button"
@@ -44,10 +44,17 @@ class FeedBack extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  score: state.player.score,
+  assertions: state.player.assertions,
+});
+
+export default connect(mapStateToProps)(FeedBack);
+
 FeedBack.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
+  score: PropTypes.number,
+  assertions: PropTypes.number,
 }.isRequired;
-
-export default FeedBack;

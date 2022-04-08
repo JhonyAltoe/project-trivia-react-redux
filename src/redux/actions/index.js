@@ -26,7 +26,8 @@ export const secondsTimer = (payload) => ({
   payload,
 });
 
-export const attScore = (payload) => ({
+export const attScore = (score, assertions) => ({
   type: 'UPDATE_SCORE',
-  payload,
+  score,
+  assertions,
 });

@@ -119,8 +119,8 @@ class GameScreen extends React.Component {
       setStorage('ranking', {
         name, score: newScore, picture, numberOfCorrectAnswers,
       });
+      changeScore(newScore, numberOfCorrectAnswers);
       this.setState({ info: { name, score: newScore, picture } });
-      changeScore(newScore);
     }
   }
 
@@ -187,7 +187,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   time: (payload) => dispatch(secondsTimer(payload)),
-  changeScore: (state) => dispatch(attScore(state)),
+  changeScore: (score, assertions) => dispatch(attScore(score, assertions)),
 });
 
 GameScreen.propTypes = {
