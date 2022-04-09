@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getStorage } from '../../services/handleLocalStorage';
+import './styles.css';
 
 class Ranking extends React.Component {
   constructor() {
@@ -11,15 +12,15 @@ class Ranking extends React.Component {
   showRanking = () => {
     const ranking = getStorage('rankingPlayers').sort((a, b) => b.score - a.score);
     return (
-      <div>
+      <>
         {ranking.map((each, index) => (
-          <div key={ index }>
+          <div key={ index } className="ranking-container">
             <img src={ each.picture } alt={ each.name } />
             <p data-testid={ `player-name-${index}` }>{ each.name }</p>
             <p data-testid={ `player-score-${index}` }>{ each.score }</p>
           </div>
         ))}
-      </div>
+      </>
     );
   };
 
@@ -30,10 +31,13 @@ class Ranking extends React.Component {
 
   render() {
     return (
-      <div>
-        <h3 data-testid="ranking-title">Ranking</h3>
-        { this.showRanking() }
+      <div className="default-container">
+        <div className="default-field ranking-field">
+          <h1 data-testid="ranking-title">Ranking</h1>
+          { this.showRanking() }
+        </div>
         <button
+          className="default-button"
           type="button"
           data-testid="btn-go-home"
           onClick={ this.redirectHome }

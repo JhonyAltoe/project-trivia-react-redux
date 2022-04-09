@@ -9,7 +9,7 @@
 
 .gamescreen-questions-field {
   align-items: center;
-  background-color: rgb(255, 255, 255, 0.2);
+  background-color: var(--tramparentWhite);
   border-radius: 20px;
   box-shadow: 8px 8px 20px 9px rgba(26, 26, 26, 0.6);
   display: flex;

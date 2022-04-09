@@ -1,0 +1,21 @@
+.ranking-container {
+  align-items: center;
+  background-color: var(--tramparentWhite);
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 1px 16px 1px 4px;
+  width: 80%;
+  box-shadow: 4px 4px 4px 4px rgba(26, 26, 26, 0.6);
+}
+
+.ranking-container img {
+  border-radius: 50%;
+  width: 45px;
+}
+
+.ranking-field h1 {
+  padding: 24px;
+  text-shadow: var(--titleShadow);
+}

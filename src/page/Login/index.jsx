@@ -47,7 +47,7 @@ class Login extends Component {
   render() {
     const { bttDisabled, inputPlayerName, inputGravatarEmail } = this.state;
     return (
-      <main className="container-login-main">
+      <section className="container-login-main">
         <div className="container-login">
           <img src={ triviaImg } alt="Logo trivia" />
           <form>
@@ -91,7 +91,7 @@ class Login extends Component {
             </button>
           </Link>
         </div>
-      </main>
+      </section>
     );
   }
 }
