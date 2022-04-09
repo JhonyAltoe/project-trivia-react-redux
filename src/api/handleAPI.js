@@ -9,7 +9,7 @@ export const fetchQuestionsAndAnswers = async (
   configs,
 ) => {
   let result = '';
-  if (configs.type !== '' && configs.difficulty !== '' && configs.category !== '') {
+  if (configs.type !== '' || configs.difficulty !== '' || configs.category !== '') {
     result = await fetch(`https://opentdb.com/api.php?amount=5&category=${configs.category}&difficulty=${configs.difficulty}&type=${configs.type}&token=${token}`);
   } else {
     result = await fetch(`https://opentdb.com/api.php?amount=5&token=${token}`);
