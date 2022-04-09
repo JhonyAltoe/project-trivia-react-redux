@@ -34,7 +34,7 @@ body, input, button {
 }
 
 ::-webkit-scrollbar-track {
-  background: #888;
+  background: rgba(136, 136, 136, 0.486);
   border-radius: 10px;
 }
 

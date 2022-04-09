@@ -4,7 +4,7 @@
   flex-direction: column;
   height: 84%;
   margin-bottom: 3%;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 95%;
 }
 
