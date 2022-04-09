@@ -10,20 +10,23 @@
 }
 
 .header-component > img {
-  height: 60%;
+  height: 45%;
 }
 
 .header-user-infos {
   align-items: center;
   color: white;
   display: flex;
-  font-weight: 700;
+  font-weight: 500;
   height: 50%;
-  justify-content: space-between;
-  width: 340px;
+  justify-content: flex-end;
 }
 
 .header-user-infos img {
   border-radius: 50%;
-  height: 100%;
+  height: 45px;
+}
+
+.header-user-infos div {
+  margin-left: 12px;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
+import he from 'he';
 
 class Question extends React.Component {
   render() {
@@ -17,7 +18,7 @@ class Question extends React.Component {
           className="question-text"
           data-testid="question-text"
         >
-          { question }
+          { he.decode(question) }
         </div>
       </div>
     );

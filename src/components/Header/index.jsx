@@ -38,16 +38,17 @@ class Header extends Component {
         <div className="header-user-infos">
           <div data-testid="header-player-name">{ name }</div>
           <div>
-            Pontuação:
+            Pontos:
             {' '}
             <span data-testid="header-score">{ score }</span>
           </div>
-          <img
-            className="profile-image"
-            data-testid="header-profile-picture"
-            src={ picture }
-            alt="player avatar"
-          />
+          <div>
+            <img
+              data-testid="header-profile-picture"
+              src={ picture }
+              alt="player avatar"
+            />
+          </div>
         </div>
       </div>
     );
