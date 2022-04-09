@@ -18,6 +18,12 @@ export const fetchQuestionsAndAnswers = async (
   return data;
 };
 
+export const fetchTest = async (configs) => {
+  const result = await fetch(`https://opentdb.com/api.php?amount=5&category=${configs.category}&difficulty=${configs.difficulty}&type=${configs.type}`);
+  const data = await result.json();
+  return data;
+};
+
 export const fetchCategories = async () => {
   const result = await fetch('https://opentdb.com/api_category.php');
   const data = await result.json();

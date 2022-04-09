@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchCategories } from '../../api/handleAPI';
+import { fetchCategories, fetchTest } from '../../api/handleAPI';
 import { saveGameConfig } from '../../redux/actions';
+
+const FIVE = 5;
 
 class Config extends Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class Config extends Component {
       category: '',
       type: '',
       difficulty: '',
+      noHaveQuestions: false,
     };
   }
 
@@ -25,10 +28,20 @@ class Config extends Component {
     this.setState({ categories: result });
   };
 
-  editConfigs = async (obj) => {
+  editConfigs = async ({ category, type, difficulty }) => {
     const { saveConfig, history } = this.props;
-    saveConfig(obj);
-    history.push('/');
+    saveConfig({ category, type, difficulty });
+    const configs = {
+      type,
+      category,
+      difficulty,
+    };
+    const questions = await fetchTest(configs);
+    if (questions.results.length === FIVE) {
+      history.push('/');
+    } else {
+      this.setState({ noHaveQuestions: true });
+    }
   }
 
   render() {
@@ -37,6 +50,7 @@ class Config extends Component {
       category,
       type,
       difficulty,
+      noHaveQuestions,
     } = this.state;
     return (
       <div>
@@ -83,6 +97,11 @@ class Config extends Component {
         >
           Confirmar edição
         </button>
+        { noHaveQuestions && (
+          <div>
+            <span>Não tem Questões, mude a configuração</span>
+          </div>
+        )}
       </div>
     );
   }
