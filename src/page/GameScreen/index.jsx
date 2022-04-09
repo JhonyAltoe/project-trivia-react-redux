@@ -34,8 +34,11 @@ class GameScreen extends React.Component {
   }
 
   mountQuestions = async () => {
-    const { token } = this.props;
-    const { results } = await fetchQuestionsAndAnswers(token);
+    const { token, configs } = this.props;
+    const { results } = await fetchQuestionsAndAnswers(
+      token,
+      configs,
+    );
     this.setState({ questions: results }, () => {
       this.generateAlternatives();
     });
@@ -189,6 +192,7 @@ class GameScreen extends React.Component {
 const mapStateToProps = (state) => ({
   token: state.token,
   stopWatch: state.reducerTimer.seconds,
+  configs: state.reducerConfig.configs,
 });
 
 const mapDispatchToProps = (dispatch) => ({

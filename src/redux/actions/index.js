@@ -31,3 +31,8 @@ export const attScore = (score, assertions) => ({
   score,
   assertions,
 });
+
+export const saveGameConfig = (payload) => ({
+  type: 'SAVE_CONFIG',
+  payload,
+});
