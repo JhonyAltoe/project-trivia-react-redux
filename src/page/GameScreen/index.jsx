@@ -34,7 +34,7 @@ class GameScreen extends React.Component {
   }
 
   mountQuestions = async () => {
-    const { token, configs } = this.props;
+    const { token, configs = { type: '', category: '', difficulty: '' } } = this.props;
     const { results } = await fetchQuestionsAndAnswers(
       token,
       configs,

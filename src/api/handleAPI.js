@@ -6,14 +6,14 @@ export const fetchToken = async () => {
 
 export const fetchQuestionsAndAnswers = async (
   token,
-  configs = {
-    type: '',
-    category: '',
-    difficulty: '',
-  },
-  questionQuantity = '5',
+  configs,
 ) => {
-  const result = await fetch(`https://opentdb.com/api.php?amount=${questionQuantity}&category=${configs.category}&difficulty=${configs.difficulty}&type=${configs.type}&token=${token}`);
+  let result = '';
+  if (configs.type !== '' && configs.difficulty !== '' && configs.category !== '') {
+    result = await fetch(`https://opentdb.com/api.php?amount=5&category=${configs.category}&difficulty=${configs.difficulty}&type=${configs.type}&token=${token}`);
+  } else {
+    result = await fetch(`https://opentdb.com/api.php?amount=5&token=${token}`);
+  }
   const data = await result.json();
   return data;
 };
