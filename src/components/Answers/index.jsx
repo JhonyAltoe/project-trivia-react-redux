@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
+import he from 'he';
 
 class Answers extends Component {
   render() {
@@ -22,7 +23,7 @@ class Answers extends Component {
                 key={ index }
                 onClick={ () => showAnswersResults(each) }
               >
-                { each }
+                { he.decode(each) }
               </button>
             );
           }
@@ -35,7 +36,7 @@ class Answers extends Component {
               key={ index }
               onClick={ () => showAnswersResults(each) }
             >
-              { each }
+              { he.decode(each) }
             </button>
           );
         })}
