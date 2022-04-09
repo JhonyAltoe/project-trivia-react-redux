@@ -2,6 +2,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 84%;
   margin-bottom: 3%;
   overflow-y: scroll;
   width: 95%;
