@@ -14,7 +14,7 @@
 
   --tramparentWhite: rgb(255, 255, 255, 0.2);
 
-  --titleShadow: 1px 1px 3px rgba(0, 0, 0, 0.37);
+  --textShadow: 1px 1px 3px rgba(0, 0, 0, 0.37);
 }
 
 * {
@@ -27,6 +27,24 @@ body, input, button {
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #888;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--darknessPurple);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #402d53cb;
 }
 
 .default-container {
@@ -50,12 +68,12 @@ body, input, button {
   width: 80%;
 }
 
-.default-button {
+.default-pink-button {
   background: var(--hotPink);
   border: none;
   border-radius: 5px;
-  box-shadow: 8px 8px 20px 9px rgba(26, 26, 26, 0.6);
-  color: rgb(219, 219, 219);
+  box-shadow: 4px 4px 12px 8px rgba(26, 26, 26, 0.4);
+  color: rgb(236, 236, 236);
   cursor: pointer;
   font-size: 20px;
   font-weight: 700;
@@ -65,11 +83,20 @@ body, input, button {
   width: 50%;
 }
 
-.default-button:hover {
-  filter: brightness(0.8);
+.default-purble-button {
+  background: var(--darknessPurple);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 4px 4px 12px 4px rgba(26, 26, 26, 0.4);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 12px 0;
+  padding: 12px 18px;
+  transition: filter 0.2s;
 }
 
-/* margin: 12px 0;
-padding: 12px; */
-/* background: var(--darknessPurple); */
-
+.default-pink-button:hover, .default-purble-button:hover {
+  filter: brightness(0.8);
+}

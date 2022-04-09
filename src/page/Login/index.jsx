@@ -70,7 +70,7 @@ class Login extends Component {
               placeholder="Digite seu email"
             />
             <button
-              className="button-loging"
+              className="default-pink-button login-pink-button"
               disabled={ bttDisabled }
               type="button"
               data-testid="btn-play"
@@ -83,7 +83,7 @@ class Login extends Component {
             to="/configuracoes"
           >
             <button
-              className="button-loging"
+              className="default-purble-button"
               type="button"
               data-testid="btn-settings"
             >
