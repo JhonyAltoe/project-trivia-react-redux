@@ -144,9 +144,9 @@ class GameScreen extends React.Component {
       bttDisabled,
     } = this.state;
     return (
-      <section className="gamescreen-component">
+      <section className="default-container gamescreen-component">
         <Header info={ info } />
-        <div className="gamescreen-questions-field">
+        <div className="default-field">
           <div className="questions-area">
             <Question
               category={ questions[index].category }
@@ -164,6 +164,7 @@ class GameScreen extends React.Component {
           <div className="button-area">
             { borderCorrect !== '' && (
               <button
+                className="default-pink-button"
                 type="submit"
                 data-testid="btn-next"
                 onClick={ this.nextQuestion }

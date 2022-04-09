@@ -34,40 +34,38 @@ class FeedBack extends React.Component {
   render() {
     const { score, assertions } = this.props;
     return (
-      <div className="feedback-container">
+      <div className="default-container feedback-container">
         <Header />
-        <div className="feedback-field">
-          <div className="feedback-field-infos">
-            <div className="final-msg-game font-size-40 ">{this.verifyScore()}</div>
-            <div className="font-size-30">
-              Total score:
-              {' '}
-              <span data-testid="feedback-total-score">{score}</span>
-            </div>
-            <div className="font-size-30">
-              Total questions:
-              {' '}
-              <span data-testid="feedback-total-question">{assertions}</span>
-            </div>
-            <button
-              className="feedback-button color-button-purple"
-              data-testid="btn-ranking"
-              type="button"
-              onClick={ this.redirectToRanking }
-            >
-              Ver ranking
-            </button>
+        <div className="default-field feedback-field">
+          <div className="final-msg-game font-size-40 ">{this.verifyScore()}</div>
+          <div className="font-size-30">
+            Total score:
+            {' '}
+            <span data-testid="feedback-total-score">{score}</span>
           </div>
-          <div className="feedback-field-button">
-            <button
-              className="feedback-button color-button-pink"
-              data-testid="btn-play-again"
-              type="button"
-              onClick={ this.resetGame }
-            >
-              Play Again
-            </button>
+          <div className="font-size-30">
+            Total questions:
+            {' '}
+            <span data-testid="feedback-total-question">{assertions}</span>
           </div>
+          <button
+            className="default-purble-button feedback-purble-button"
+            data-testid="btn-ranking"
+            type="button"
+            onClick={ this.redirectToRanking }
+          >
+            Ver ranking
+          </button>
+        </div>
+        <div className="feedback-field-button">
+          <button
+            className="default-pink-button"
+            data-testid="btn-play-again"
+            type="button"
+            onClick={ this.resetGame }
+          >
+            Play Again
+          </button>
         </div>
       </div>
     );

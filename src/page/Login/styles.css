@@ -1,21 +1,7 @@
-:root {
-
-  --darkBlue: rgba(10, 78, 177, 1);
-
-  --middleBlue: rgba(57, 111, 190, 1);
-
-  --lightBlue: rgba(123, 154, 200, 1);
-
-  --radialBlue: var(--lightBlue) 11% , var(--middleBlue) 37% , var(--darkBlue) 76%;
-
-  --hotPink: #ea4c89;
-
-  --darknessPurple: #402d53;
-}
-
 .container-login-main {
   background: radial-gradient(circle, var(--radialBlue));
   display: flex;
+  height: 100vh;
   justify-content: center;
 }
 
@@ -23,7 +9,6 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
   justify-content: center;
   max-width: 800px;
 }
@@ -50,38 +35,13 @@
   width: 50%;
 }
 
-.container-login form button {
-  background: var(--hotPink);
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 700;
+.login-pink-button {
+  box-shadow: none;
   margin: 12px 0 84px;
   padding: 24px;
-  transition: filter 0.2s;
-  width: 50%;
 }
 
 .container-login a {
   text-align: center;
   width: 100%;
-}
-
-.container-login a button {
-  background: var(--darknessPurple);
-  border: none;
-  border-radius: 5px;
-  color: white;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 12px 0;
-  padding: 12px;
-  transition: filter 0.2s;
-}
-
-.container-login button:hover {
-  filter: brightness(0.8);
 }

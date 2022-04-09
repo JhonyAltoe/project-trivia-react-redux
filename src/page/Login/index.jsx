@@ -47,7 +47,7 @@ class Login extends Component {
   render() {
     const { bttDisabled, inputPlayerName, inputGravatarEmail } = this.state;
     return (
-      <main className="container-login-main">
+      <section className="container-login-main">
         <div className="container-login">
           <img src={ triviaImg } alt="Logo trivia" />
           <form>
@@ -70,7 +70,7 @@ class Login extends Component {
               placeholder="Digite seu email"
             />
             <button
-              className="button-loging"
+              className="default-pink-button login-pink-button"
               disabled={ bttDisabled }
               type="button"
               data-testid="btn-play"
@@ -83,7 +83,7 @@ class Login extends Component {
             to="/configuracoes"
           >
             <button
-              className="button-loging"
+              className="default-purble-button"
               type="button"
               data-testid="btn-settings"
             >
@@ -91,7 +91,7 @@ class Login extends Component {
             </button>
           </Link>
         </div>
-      </main>
+      </section>
     );
   }
 }

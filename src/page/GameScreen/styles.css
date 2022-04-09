@@ -1,22 +1,5 @@
 .gamescreen-component {
-  align-items: center;
-  background: radial-gradient(circle, var(--radialBlue));
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
   justify-content: space-between;
-}
-
-.gamescreen-questions-field {
-  align-items: center;
-  background-color: rgb(255, 255, 255, 0.2);
-  border-radius: 20px;
-  box-shadow: 8px 8px 20px 9px rgba(26, 26, 26, 0.6);
-  display: flex;
-  flex-direction: column;
-  height: 70%;
-  max-width: 700px;
-  width: 80%;
 }
 
 .questions-area {
@@ -33,22 +16,4 @@
   height: 20%;
   text-align: center;
   width: 100%;
-}
-
-.button-area button {
-  background: var(--hotPink);
-  border: none;
-  border-radius: 5px;
-  color: rgb(219, 219, 219);
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 2px 0;
-  padding: 8px;
-  transition: filter 0.2s;
-  width: 70%;
-}
-
-.button-area button:hover {
-  filter: brightness(0.8);
 }

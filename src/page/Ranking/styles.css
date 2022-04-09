@@ -1,0 +1,39 @@
+.ranking-line-field {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 84%;
+  margin-bottom: 3%;
+  overflow-y: auto;
+  width: 95%;
+}
+
+.ranking-line-container {
+  align-items: center;
+  background-color: var(--tramparentWhite);
+  border-radius: 30px;
+  box-shadow: 4px 4px 4px 4px rgba(26, 26, 26, 0.6);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 1px 16px 1px 4px;
+  width: 80%;
+}
+
+.ranking-line-container img {
+  border-radius: 50%;
+  width: 45px;
+}
+
+.ranking-field h1 {
+  padding: 24px;
+  text-shadow: var(--titleShadow);
+}
+
+.ranking-purble-button {
+  margin: 8% 0 0;
+}
+
+.ranking-font-weight {
+  font-weight: 700;
+}
