@@ -22,6 +22,7 @@ class Config extends Component {
 
   componentDidMount() {
     this.getCategories();
+    this.getConfigFromStore();
   }
 
   getCategories = async () => {
@@ -45,6 +46,12 @@ class Config extends Component {
     }
   }
 
+  getConfigFromStore = () => {
+    const { configs } = this.props;
+    console.log(configs);
+    this.setState({ ...configs });
+  }
+
   render() {
     const {
       categories,
@@ -66,6 +73,7 @@ class Config extends Component {
               <select
                 id="select-category-config"
                 onChange={ ({ target }) => this.setState({ category: target.value }) }
+                value={ category }
               >
                 <option> </option>
                 {categories.trivia_categories.map((element) => (
@@ -87,6 +95,7 @@ class Config extends Component {
             <select
               id="select-difficulty-config"
               onChange={ ({ target }) => this.setState({ difficulty: target.value }) }
+              value={ difficulty }
             >
               <option> </option>
               <option value="easy">Easy</option>
@@ -100,6 +109,7 @@ class Config extends Component {
             <select
               id="select-type-config"
               onChange={ ({ target }) => this.setState({ type: target.value }) }
+              value={ type }
             >
               <option> </option>
               <option value="multiple">Multiple choice</option>
@@ -126,6 +136,10 @@ class Config extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  configs: state.reducerConfig.configs,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   saveConfig: (payload) => dispatch(saveGameConfig(payload)),
 });
@@ -134,4 +148,4 @@ Config.propTypes = {
   saveConfig: propTypes.func,
 }.isRequired;
 
-export default connect(null, mapDispatchToProps)(Config);
+export default connect(mapStateToProps, mapDispatchToProps)(Config);
