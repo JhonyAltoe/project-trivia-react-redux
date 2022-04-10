@@ -54,29 +54,38 @@ class Config extends Component {
       noHaveQuestions,
     } = this.state;
     return (
-      <div className="default-container">
-        <h1 data-testid="settings-title">
-          Configurações
-        </h1>
+      <div className="default-container config-container">
         <div className="default-field">
+          <h1 data-testid="settings-title">
+            Configurações
+          </h1>
           {categories.trivia_categories !== undefined ? (
-            <div>
-              <h2>Category</h2>
+            <label htmlFor="select-category-config">
+              <span>Category:</span>
+              {' '}
               <select
+                id="select-category-config"
                 onChange={ ({ target }) => this.setState({ category: target.value }) }
               >
                 <option> </option>
                 {categories.trivia_categories.map((element) => (
-                  <option value={ element.id } key={ element.id }>{element.name}</option>
+                  <option
+                    value={ element.id }
+                    key={ element.id }
+                  >
+                    {element.name}
+                  </option>
                 ))}
               </select>
-            </div>
+            </label>
           ) : (
             <p>Loading...</p>
           )}
-          <div>
-            <h2>Difficulty</h2>
+          <label htmlFor="select-difficulty-config">
+            <span>Difficulty:</span>
+            {' '}
             <select
+              id="select-difficulty-config"
               onChange={ ({ target }) => this.setState({ difficulty: target.value }) }
             >
               <option> </option>
@@ -84,29 +93,33 @@ class Config extends Component {
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
             </select>
-          </div>
-          <div>
-            <h2>Type</h2>
+          </label>
+          <label htmlFor="select-type-config">
+            <span>Type:</span>
+            {' '}
             <select
+              id="select-type-config"
               onChange={ ({ target }) => this.setState({ type: target.value }) }
             >
               <option> </option>
               <option value="multiple">Multiple choice</option>
               <option value="boolean">True / False</option>
             </select>
-          </div>
-          <button
-            className="default-purble-button"
-            type="button"
-            onClick={ () => this.editConfigs({ category, type, difficulty }) }
-          >
-            Confirmar edição
-          </button>
+          </label>
           { noHaveQuestions && (
-            <div>
-              <span>Não tem Questões, mude a configuração</span>
+            <div className="alert-config">
+              Não há questões para esse configuração, tente outra
             </div>
           )}
+          <div className="config-field-button">
+            <button
+              className="default-purble-button"
+              type="button"
+              onClick={ () => this.editConfigs({ category, type, difficulty }) }
+            >
+              Confirmar edição
+            </button>
+          </div>
         </div>
       </div>
     );
