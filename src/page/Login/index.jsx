@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import md5 from 'crypto-js/md5';
-import { getToken } from '../../redux/actions';
+import { getToken, secondsTimer } from '../../redux/actions';
 import './styles.css';
 import triviaImg from '../../images/trivia.png';
 import { setStorage } from '../../services/handleLocalStorage';
+
+const THIRTY = 30;
 
 class Login extends Component {
   constructor(props) {
@@ -33,7 +35,8 @@ class Login extends Component {
   }
 
   startGame = async () => {
-    const { history, fetchAPI } = this.props;
+    const { history, fetchAPI, time } = this.props;
+    time(THIRTY);
     await fetchAPI();
     history.push('/gamescreen');
     fetchAPI();
@@ -98,6 +101,7 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAPI: () => dispatch(getToken()),
+  time: (payload) => dispatch(secondsTimer(payload)),
 });
 
 Login.propTypes = {
