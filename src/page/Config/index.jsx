@@ -48,7 +48,6 @@ class Config extends Component {
 
   getConfigFromStore = () => {
     const { configs } = this.props;
-    console.log(configs);
     this.setState({ ...configs });
   }
 
@@ -76,7 +75,7 @@ class Config extends Component {
                 onChange={ ({ target }) => this.setState({ category: target.value }) }
                 value={ category }
               >
-                <option> </option>
+                <option value="">Any category</option>
                 {categories.trivia_categories.map((element) => (
                   <option
                     value={ element.id }
@@ -99,7 +98,7 @@ class Config extends Component {
               onChange={ ({ target }) => this.setState({ difficulty: target.value }) }
               value={ difficulty }
             >
-              <option> </option>
+              <option value="">Any difficulty</option>
               <option value="easy">Easy</option>
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
@@ -114,7 +113,7 @@ class Config extends Component {
               onChange={ ({ target }) => this.setState({ type: target.value }) }
               value={ type }
             >
-              <option> </option>
+              <option value="">Any type</option>
               <option value="multiple">Multiple choice</option>
               <option value="boolean">True / False</option>
             </select>
