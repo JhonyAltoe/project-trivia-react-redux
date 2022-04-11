@@ -138,28 +138,28 @@ describe('7 - [TELA DE JOGO] Desenvolva o estilo que, ao clicar em uma resposta,
     cy.get(CORRECT_ALTERNATIVE_SELECTOR).click();
     cy.get(CORRECT_ALTERNATIVE_SELECTOR).should('have.css', 'border-color', 'rgb(6, 240, 15)');
     cy.get(CORRECT_ALTERNATIVE_SELECTOR).should('have.css', 'border-style', 'solid');
-    cy.get(CORRECT_ALTERNATIVE_SELECTOR).should('have.css', 'border-width', '3px');
+    cy.get(CORRECT_ALTERNATIVE_SELECTOR).should('have.css', 'border-width', '1px');
   });
 
   it('Será validado se a cor das alternativas incorretas é "rgb(255, 0, 0)" ao acertar a questão', () => {
     cy.get(CORRECT_ALTERNATIVE_SELECTOR).click();
     cy.get(WRONG_ALTERNATIVES_SELECTOR).should('have.css', 'border-color', 'rgb(255, 0, 0)');
     cy.get(WRONG_ALTERNATIVES_SELECTOR).should('have.css', 'border-style', 'solid');
-    cy.get(WRONG_ALTERNATIVES_SELECTOR).should('have.css', 'border-width', '3px');
+    cy.get(WRONG_ALTERNATIVES_SELECTOR).should('have.css', 'border-width', '1px');
   });
 
   it('Será validado se a cor da alternativa correta é "rgb(6, 240, 15)" ao errar a questão', () => {
     cy.get(WRONG_ALTERNATIVES_SELECTOR).first().click();
     cy.get(CORRECT_ALTERNATIVE_SELECTOR).should('have.css', 'border-color', 'rgb(6, 240, 15)');
     cy.get(CORRECT_ALTERNATIVE_SELECTOR).should('have.css', 'border-style', 'solid');
-    cy.get(CORRECT_ALTERNATIVE_SELECTOR).should('have.css', 'border-width', '3px');
+    cy.get(CORRECT_ALTERNATIVE_SELECTOR).should('have.css', 'border-width', '1px');
   });
 
   it('Será validado se a cor das alternativas incorretas é "rgb(255, 0, 0)" ao errar a questão', () => {
     cy.get(WRONG_ALTERNATIVES_SELECTOR).first().click();
     cy.get(WRONG_ALTERNATIVES_SELECTOR).should('have.css', 'border-color', 'rgb(255, 0, 0)');
     cy.get(WRONG_ALTERNATIVES_SELECTOR).should('have.css', 'border-style', 'solid');
-    cy.get(WRONG_ALTERNATIVES_SELECTOR).should('have.css', 'border-width', '3px');
+    cy.get(WRONG_ALTERNATIVES_SELECTOR).should('have.css', 'border-width', '1px');
   });
 });
 
