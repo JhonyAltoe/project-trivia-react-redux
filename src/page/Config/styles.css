@@ -2,17 +2,17 @@
   background: radial-gradient(circle, var(--radialPurple));
 }
 
-.default-field {
-  padding: 0 10%;
+.config-field {
+  padding: 5%;
 }
 
-.default-field h1 {
+.config-field h1 {
   align-items: center;
   display: flex;
   height: 20%;
 }
 
-.default-field label {
+.config-field label {
   align-self: flex-start;
   font-size: larger;
   font-weight: 500;
@@ -21,19 +21,19 @@
   width: 100%;
 }
 
-.default-field span {
+.config-field span {
   display: inline-block;
   width: 90px;
 }
 
-.default-field select {
+.config-field select {
   border-radius: 10px;
   font-size: medium;
   padding: 8px;
   width: 100%;
 }
 
-.default-field option {
+.config-field option {
   font-size: medium;
 }
 

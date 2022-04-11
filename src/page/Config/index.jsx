@@ -62,7 +62,7 @@ class Config extends Component {
     } = this.state;
     return (
       <div className="default-container config-container">
-        <div className="default-field">
+        <div className="default-field config-field">
           <h1 data-testid="settings-title">
             Configurações
           </h1>

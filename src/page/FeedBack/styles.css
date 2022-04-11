@@ -23,6 +23,10 @@
   width: 100%;
 }
 
+.feedback-field-button button {
+  max-width: 350px;
+}
+
 .font-size-30 {
   font-size: 30px;
   text-shadow: var(--textShadow);
