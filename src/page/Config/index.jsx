@@ -59,6 +59,7 @@ class Config extends Component {
           <div>
             <h2>Category</h2>
             <select
+              data-testid="select-category-config"
               onChange={ ({ target }) => this.setState({ category: target.value }) }
             >
               <option> </option>
@@ -73,6 +74,7 @@ class Config extends Component {
         <div>
           <h2>Difficulty</h2>
           <select
+            data-testid="select-difficulty-config"
             onChange={ ({ target }) => this.setState({ difficulty: target.value }) }
           >
             <option> </option>
@@ -84,6 +86,7 @@ class Config extends Component {
         <div>
           <h2>Type</h2>
           <select
+            data-testid="select-type-config"
             onChange={ ({ target }) => this.setState({ type: target.value }) }
           >
             <option> </option>
@@ -93,13 +96,18 @@ class Config extends Component {
         </div>
         <button
           type="button"
+          data-testid="button-edit-config"
           onClick={ () => this.editConfigs({ category, type, difficulty }) }
         >
           Confirmar edição
         </button>
         { noHaveQuestions && (
           <div>
-            <span>Não tem Questões, mude a configuração</span>
+            <span
+              data-testid="noHaveQuestions"
+            >
+              Não temos questões com essa configuração
+            </span>
           </div>
         )}
       </div>
