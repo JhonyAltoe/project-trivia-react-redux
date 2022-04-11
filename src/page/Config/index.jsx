@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchCategories, fetchTest } from '../../api/handleAPI';
 import { saveGameConfig } from '../../redux/actions';
+import './styles.css';
 
 const FIVE = 5;
 
@@ -21,6 +22,7 @@ class Config extends Component {
 
   componentDidMount() {
     this.getCategories();
+    this.getConfigFromStore();
   }
 
   getCategories = async () => {
@@ -44,6 +46,12 @@ class Config extends Component {
     }
   }
 
+  getConfigFromStore = () => {
+    const { configs } = this.props;
+    console.log(configs);
+    this.setState({ ...configs });
+  }
+
   render() {
     const {
       categories,
@@ -53,67 +61,91 @@ class Config extends Component {
       noHaveQuestions,
     } = this.state;
     return (
-      <div>
-        <h1 data-testid="settings-title">Configurações</h1>
-        {categories.trivia_categories !== undefined ? (
-          <div>
-            <h2>Category</h2>
+      <div className="default-container config-container">
+        <div className="default-field config-field">
+          <h1 data-testid="settings-title">
+            Configurações
+          </h1>
+          {categories.trivia_categories !== undefined ? (
+            <label htmlFor="select-category-config">
+              <span>Category:</span>
+              {' '}
+              <select
+                id="select-category-config"
+                data-testid="select-category-config"
+                onChange={ ({ target }) => this.setState({ category: target.value }) }
+                value={ category }
+              >
+                <option> </option>
+                {categories.trivia_categories.map((element) => (
+                  <option
+                    value={ element.id }
+                    key={ element.id }
+                  >
+                    {element.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          ) : (
+            <p>Loading...</p>
+          )}
+          <label htmlFor="select-difficulty-config">
+            <span>Difficulty:</span>
+            {' '}
             <select
-              data-testid="select-category-config"
-              onChange={ ({ target }) => this.setState({ category: target.value }) }
+              data-testid="select-difficulty-config"
+              id="select-difficulty-config"
+              onChange={ ({ target }) => this.setState({ difficulty: target.value }) }
+              value={ difficulty }
             >
               <option> </option>
-              {categories.trivia_categories.map((element) => (
-                <option value={ element.id } key={ element.id }>{element.name}</option>
-              ))}
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
             </select>
-          </div>
-        ) : (
-          <p>Loading...</p>
-        )}
-        <div>
-          <h2>Difficulty</h2>
-          <select
-            data-testid="select-difficulty-config"
-            onChange={ ({ target }) => this.setState({ difficulty: target.value }) }
-          >
-            <option> </option>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
-        </div>
-        <div>
-          <h2>Type</h2>
-          <select
-            data-testid="select-type-config"
-            onChange={ ({ target }) => this.setState({ type: target.value }) }
-          >
-            <option> </option>
-            <option value="multiple">Multiple choice</option>
-            <option value="boolean">True / False</option>
-          </select>
-        </div>
-        <button
-          type="button"
-          data-testid="button-edit-config"
-          onClick={ () => this.editConfigs({ category, type, difficulty }) }
-        >
-          Confirmar edição
-        </button>
-        { noHaveQuestions && (
-          <div>
-            <span
+          </label>
+          <label htmlFor="select-type-config">
+            <span>Type:</span>
+            {' '}
+            <select
+              id="select-type-config"
+              data-testid="select-type-config"
+              onChange={ ({ target }) => this.setState({ type: target.value }) }
+              value={ type }
+            >
+              <option> </option>
+              <option value="multiple">Multiple choice</option>
+              <option value="boolean">True / False</option>
+            </select>
+          </label>
+          { noHaveQuestions && (
+            <div
+              className="alert-config"
               data-testid="noHaveQuestions"
             >
-              Não temos questões com essa configuração
-            </span>
+              Não há questões para essa configuração, tente outra!
+            </div>
+          )}
+          <div className="config-field-button">
+            <button
+              className="default-purble-button"
+              data-testid="button-edit-config"
+              type="button"
+              onClick={ () => this.editConfigs({ category, type, difficulty }) }
+            >
+              Confirmar edição
+            </button>
           </div>
-        )}
+        </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  configs: state.reducerConfig.configs,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   saveConfig: (payload) => dispatch(saveGameConfig(payload)),
@@ -123,4 +155,4 @@ Config.propTypes = {
   saveConfig: propTypes.func,
 }.isRequired;
 
-export default connect(null, mapDispatchToProps)(Config);
+export default connect(mapStateToProps, mapDispatchToProps)(Config);

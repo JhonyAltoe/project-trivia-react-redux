@@ -1,13 +1,21 @@
 :root {
 
-  --darkBlue: rgba(10, 78, 177, 1);
+  --darkBlue: #0a4eb1;
 
-  --middleBlue: rgba(57, 111, 190, 1);
+  --middleBlue: #396fbe;
 
-  --lightBlue: rgba(123, 154, 200, 1);
+  --lightBlue: #7b9ac8;
+
+  --darkPurple: #402d53;
+
+  --middlePurple: #715092;
+
+  --lightPurple: #9d66d3;
 
   --radialBlue: var(--lightBlue) 11% , var(--middleBlue) 37% , var(--darkBlue) 76%;
 
+  --radialPurple: var(--lightPurple) 11% , var(--middlePurple) 37% , var(--darkPurple) 76%;
+  
   --hotPink: #ea4c89;
 
   --darknessPurple: #402d53;
@@ -65,7 +73,7 @@ body, input, button {
   flex-direction: column;
   height: 70%;
   max-width: 700px;
-  width: 80%;
+  width: 90%;
 }
 
 .default-pink-button {

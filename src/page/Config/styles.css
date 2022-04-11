@@ -1,0 +1,50 @@
+.config-container {
+  background: radial-gradient(circle, var(--radialPurple));
+}
+
+.config-field {
+  padding: 5%;
+}
+
+.config-field h1 {
+  align-items: center;
+  display: flex;
+  height: 20%;
+}
+
+.config-field label {
+  align-self: flex-start;
+  font-size: larger;
+  font-weight: 500;
+  height: 60px;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.config-field span {
+  display: inline-block;
+  width: 90px;
+}
+
+.config-field select {
+  border-radius: 10px;
+  font-size: medium;
+  padding: 8px;
+  width: 100%;
+}
+
+.config-field option {
+  font-size: medium;
+}
+
+
+.alert-config {
+  color: rgb(243, 0, 0);
+  text-shadow: 0 0 2px rgb(117, 117, 117);
+}
+
+.config-field-button {
+  align-items: flex-end;
+  display: flex;
+  height: 30%;
+}

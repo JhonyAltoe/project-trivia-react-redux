@@ -24,7 +24,7 @@ describe('Testes requisitos bônus', () => {
   beforeEach(() => {
     cy.visit('http://localhost:3000/');
   });
-    
+
   it('Será validado se as questões foram geradas de acordo com as configurações Sports, Easy, Multiple choice', () => {
     cy.get(BUTTON_SETTINGS_SELECTOR).click();
     cy.wait(3000);
@@ -206,6 +206,6 @@ describe('Testes requisitos bônus', () => {
     cy.get('[data-testid="select-difficulty-config"]').select('Hard');
     cy.get('[data-testid="select-type-config"]').select('True / False');
     cy.get('[data-testid="button-edit-config"]').click();
-    cy.get('[data-testid="noHaveQuestions"]').should('have.text', 'Não temos questões com essa configuração')
+    cy.get('[data-testid="noHaveQuestions"]').should('have.text', 'Não há questões para essa configuração, tente outra!')
   });
 });

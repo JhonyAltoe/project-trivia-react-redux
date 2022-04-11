@@ -42,7 +42,7 @@ class Ranking extends React.Component {
           { this.showRanking() }
         </div>
         <button
-          className="default-pink-button ranking-purble-button"
+          className="default-pink-button ranking-pink-button"
           type="button"
           data-testid="btn-go-home"
           onClick={ this.redirectHome }

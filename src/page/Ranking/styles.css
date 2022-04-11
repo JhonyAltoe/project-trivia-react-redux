@@ -1,3 +1,12 @@
+.ranking-field {
+  padding: 0;
+}
+
+.ranking-field h1 {
+  padding: 24px;
+  text-shadow: var(--titleShadow);
+}
+
 .ranking-line-field {
   align-items: center;
   display: flex;
@@ -17,7 +26,7 @@
   justify-content: space-between;
   margin-bottom: 8px;
   padding: 1px 16px 1px 4px;
-  width: 80%;
+  width: 90%;
 }
 
 .ranking-line-container img {
@@ -25,13 +34,9 @@
   width: 45px;
 }
 
-.ranking-field h1 {
-  padding: 24px;
-  text-shadow: var(--titleShadow);
-}
-
-.ranking-purble-button {
+.ranking-pink-button {
   margin: 8% 0 0;
+  max-width: 350px;
 }
 
 .ranking-font-weight {
