@@ -41,6 +41,12 @@
   padding: 24px;
 }
 
+.login-disabled-button {
+  background-color: #808080;
+  color: #adadad;
+  pointer-events: none;
+}
+
 .container-login a {
   text-align: center;
   width: 100%;

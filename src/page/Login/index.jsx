@@ -31,7 +31,7 @@ class Login extends Component {
     const minCharacters = 6;
     const validate = ((inputPlayerName.length >= minCharacters)
       && EmailValidator.validate(inputGravatarEmail));
-    if (validate) this.setState({ bttDisabled: false });
+    this.setState({ bttDisabled: !validate });
   }
 
   startGame = async () => {
@@ -73,7 +73,11 @@ class Login extends Component {
               placeholder="Digite seu email"
             />
             <button
-              className="default-pink-button login-pink-button"
+              className={
+                `default-pink-button
+                login-pink-button
+                ${bttDisabled ? 'login-disabled-button' : ''}`
+              }
               disabled={ bttDisabled }
               type="button"
               data-testid="btn-play"
