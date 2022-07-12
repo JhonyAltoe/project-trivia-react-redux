@@ -1,4 +1,4 @@
-# Projeto React Testing Library
+# Projeto Trivia com React e Redux
 
 ## Sobre
 Este projeto foi realizado durante meu estudo na escola [Trybe](https://www.betrybe.com/ "Home page Trybe"), foi um trabalho em equipe cujo o propósito principal era chegar o mais próximo possível do dia a dia do mercado de trabalho, e treinar nossa habilidade de Soft Skills.
